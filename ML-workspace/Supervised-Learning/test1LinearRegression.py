@@ -12,3 +12,6 @@ model.fit(X, y)
 # Prediction
 prediction = model.predict([[5]])
 print(prediction)
+
+
+#expected O/P: [50.] 👉 Meaning: 5 years experience → salary ≈ 50
