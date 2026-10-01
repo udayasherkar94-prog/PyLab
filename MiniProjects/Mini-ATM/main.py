@@ -11,6 +11,33 @@
 # account number
 # pin
 
+
+
+import json
+from atm import (
+    check_balance,
+    deposit,
+    withdraw,
+    transaction_history,
+    change_pin,
+    transfer
+)
+
+
+# Load accounts from JSON
+def load_accounts():
+    try:
+        with open("accounts.json", "r") as file:
+            return json.load(file)
+
+    except FileNotFoundError:
+        return {}
+
+
+# Save accounts to JSON
+def save_accounts(accounts):
+    with open("accounts.json", "w") as file:
+        json.dump(accounts, file, indent=4)
 # create userid using combination of bankid+"-"+accountnumber
 
 # create dictionary of dictionary  accounts ["user_id"]
@@ -45,7 +72,7 @@ def register(accounts):
 
     # add the user detais to accounts dictionary
 
-    accounts["user_id"] = {
+    accounts[user_id] = {
         "name":name,
         "bank_id":bank_id,
         "bank_name":bank_name,
@@ -76,7 +103,7 @@ def login(accounts):
 
         pin = input("enter the pin:")
 
-        if pin == accounts[user_id]["pin"]:
+        if pin == accounts[user_id]['pin']:
             print("login succesful")
             return accounts[user_id]
         else:
@@ -94,7 +121,7 @@ def atm_menu(accounts,account):
 
         print("========================================================================================================")
         print("============================================Mini ATM ====================================================")
-        print(f" Welcome : {account["name"]}")
+        print(f" Welcome : {account['name']}")
 
         print()
         print("1. Check Balance")
