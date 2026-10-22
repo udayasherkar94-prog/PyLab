@@ -1,6 +1,10 @@
 # import libraries
 # import modules
 
+from modules.speech import speak, greet_user
+from modules.task_manager import ( add_tasks, show_tasks, show_pending_tasks,complete_task)
+from modules.calculator import run_calculator
+
 from datetime import datetime
 
 
